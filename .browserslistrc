@@ -1,0 +1,6 @@
+> 1%
+last 2 versions
+not dead
+# 排除browsers without official support or updates for more than 24 months. Right now these include IE 11, IE Mobile 11, BlackBerry 10, BlackBerry 7, Samsung 4, Opera Mobile 12.1, and all versions of Baidu.
+not ie < 10
+cover 99.5%
