@@ -1,13 +1,78 @@
 import PluginLegacy from '@vitejs/plugin-legacy';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  /**
+   * Dep optimization options
+   */
+  optimizeDeps: {
+    /**
+     * By default, Vite will crawl your `index.html` to detect dependencies that
+     * need to be pre-bundled. If `build.rollupOptions.input` is specified, Vite
+     * will crawl those entry points instead.
+     *
+     * If neither of these fit your needs, you can specify custom entries using
+     * this option - the value should be a fast-glob pattern or array of patterns
+     * (https://github.com/mrmlnc/fast-glob#basic-syntax) that are relative from
+     * vite project root. This will overwrite default entries inference.
+     * 默认行为不符合要求时，比如入口文件为 .vue，可自定入口
+     */
+    entries: [],
+    /**
+     * Force optimize listed dependencies (must be resolvable import paths,
+     * cannot be globs).
+     * 指定强制预构建的依赖，Vite自身扫描检测依赖不可靠
+     * 场景一：动态import会导致二次预构建=重走预构建+刷新页面+重新请求，Vite天然按需加载的特性使得某些依赖只在运行时才识别到
+     * 场景二：某些包被exclude（不常用）
+     */
+    include: [],
+    /**
+     * Do not optimize these dependencies (must be resolvable import paths,
+     * cannot be globs).
+     */
+    exclude: [],
+    /**
+     * Options to pass to esbuild during the dep scanning and optimization
+     *
+     * Certain options are omitted since changing them would not be compatible
+     * with Vite's dep optimization.
+     *
+     * - `external` is also omitted, use Vite's `optimizeDeps.exclude` option
+     * - `plugins` are merged with Vite's dep plugin
+     *
+     * https://esbuild.github.io/api
+     * 自定 esbuild 配置
+     */
+    esbuildOptions: {
+      plugins: []
+    },
+    /**
+     * Force dep pre-optimization regardless of whether deps have changed.
+     * 手动强制开启预构建
+     * @experimental
+     */
+    force: true
+  },
+  // CSS related options (preprocessors and CSS modules)
+  css: {
+    // https://github.com/css-modules/postcss-modules
+    modules: {
+      generateScopedName: '[name]-[local]-[hash:base64:5]'
+    },
+    preprocessorOptions: {
+
+    },
+    postcss: {
+      plugins: []
+    }
+  },
   // 模块解析，和`webpack`一样
   resolve: {
     alias: {
-      '@': '/src/',
-      '@utils': '/src/utils/',
-      '@styles': '/src/styles/',
+      '@': resolve(__dirname, 'src/'),
+      '@utils': resolve(__dirname, 'src/utils/'),
+      '@styles': resolve(__dirname, 'src/styles/'),
     }
   },
   // 配置开发服务

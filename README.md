@@ -9,6 +9,8 @@
 ## 上手成本低 🎯
 - 内置支持 `CSS` 预处理器，只需安装相应处理器依赖；
 - 内置支持 `PostCSS`，只需安装相应插件，相关配置配好；
-- `build` 产物
+- `build` 产物自带压缩 `js`、`css`
+## Vue
+## React
 # Reference
 [Vite下一代的前端工具链，从入门到项目最佳实践](https://www.arryblog.com/vip/vue/vite.html)
