@@ -8,9 +8,17 @@
 - 
 ## 上手成本低 🎯
 - 内置支持 `CSS` 预处理器，只需安装相应处理器依赖；
-- 内置支持 `PostCSS`，只需安装相应插件，相关配置配好；
+- 内置支持 `PostCSS`，只需安装相应插件，相关配置配好，自动搜寻`postcss.config.js`并应用；
 - `build` 产物自带压缩 `js`、`css`
 ## Vue
 ## React
+## postcss 后处理 css
+### postcss-preset-env
+- 允许开发时使用最新现代CSS语法编写，该插件将根据(`browserslist`)配置转换为兼容语法
+- 内置`autoprefixer`，可移除该插件
+### postcss-pxtorem
+将`css`样式文件中的`px`按需转化为`rem`，作移动端兼容
 # Reference
-[Vite下一代的前端工具链，从入门到项目最佳实践](https://www.arryblog.com/vip/vue/vite.html)
+[Vite下一代的前端工具链，从入门到项目最佳实践](https://www.arryblog.com/vip/vue/vite.html)   
+[postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem)   
+[postcss-preset-env](https://www.npmjs.com/package/postcss-preset-env)   

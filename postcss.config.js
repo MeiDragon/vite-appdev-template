@@ -1,7 +1,8 @@
 const isH5Mode = true
 module.exports = {
   plugins: [
-    require('postcss-preset-env'), // 加前缀
+    /* 加兼容前缀: remove autoprefixer if you had it here, it's part of postcss-preset-env */
+    require('postcss-preset-env'),
     // 把px转成rem
     isH5Mode && require('postcss-pxtorem')({
       // H5设计稿x2倍图
