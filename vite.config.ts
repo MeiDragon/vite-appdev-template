@@ -63,9 +63,10 @@ export default defineConfig({
     preprocessorOptions: {
 
     },
-    postcss: {
-      plugins: []
-    }
+    // 优先级高于postcss.config.js
+    // postcss: {
+    //   plugins: []
+    // }
   },
   // 模块解析，和`webpack`一样
   resolve: {
@@ -151,8 +152,11 @@ export default defineConfig({
           } else {
             return `assets/[ext]/[name]-[hash:8][extname]`
           }
-        }
-      }
+        },
+        sourcemap: false,
+      },
+      // 指定依赖外部化
+      external: []
     }
   },
   // 插件

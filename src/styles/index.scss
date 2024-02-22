@@ -1,4 +1,11 @@
 @import url(./base.scss);
+@import url(./reset.scss);
 .vite {
   font-size: 12px;
+}
+.box {
+  width: 375px;
+  height: 375px;
+  background: red;
+  user-select: none;
 }
