@@ -5,8 +5,9 @@ module.exports = {
     require('postcss-preset-env'),
     // 把px转成rem
     isH5Mode && require('postcss-pxtorem')({
-      // H5设计稿x2倍图
-      rootValue: 100 / 2, // 换算比例，rem->px 1:100，所以px值除100转为rem值
+      // rootValue: 100 / 2, // H5 x2倍设计稿 尺寸/rootValue = 尺寸 * 2 / 100 px * 2/100->rem
+      // rootValue: 100 / 1, // H5 x1倍设计稿 尺寸/rootValue = 尺寸/100 px/100->rem
+      rootValue: 750 / 2 / 10, // 设计稿宽度750px时的配置，可以根据设计稿大小调整此数值
       unitPrecision: 3, //允许REM单位增长到的十进制数字,小数点后保留的位数
       propList: ['*'],
       // propWhiteList: [], //默认值为空数组，禁用白名单并启用所有属性。
